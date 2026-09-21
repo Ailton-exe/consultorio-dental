@@ -1,7 +1,7 @@
-import Register from "./pages/Register";
+import AdminRegisterPatient from "./pages/AdminRegisterPatient";
 
 function App() {
-    return <Register />;
+    return <AdminRegisterPatient />;
 }
 
 export default App;
