@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap');
+
+:root {
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #0f3d72;
+}
+.login-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2.5rem;
+    position: relative;
+    width: 100%; 
+}
+
+.login-container {
+    font-family: 'Fraunces', serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 500px;
+}
+
+.login-form {
+    background-color: var(--blanco);
+    width: 100%;
+    padding: 2rem;
+    border-radius: 18px;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(112, 112, 112, 0.42);
+    -moz-box-shadow: 0px 5px 15px 0px rgba(112, 112, 112, 0.42);
+    box-shadow: 0px 5px 15px 0px rgba(112, 112, 112, 0.42);
+}
+
+.login-form h1 {
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: var(--oscuro);
+}
+.login-form p {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    color: var(--oscuro);
+}
+.campo {
+    margin-bottom: 2rem;
+}
+
+.label-titulo {
+    color: var(--oscuro);
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.input-text {
+    width: 100%;
+    background-color: #f3f6fa;
+    font-size: 14px;
+    border: none;
+    padding: 10px;
+    border-bottom: var(--primario) 4px solid;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+
+.input-text:focus {
+    outline: none;
+}
+
+.boton {
+    background-color: var(--primario);
+    color: var(--blanco);
+    padding: 10px;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+}
+
+.boton:hover {
+    cursor: pointer;
+    background-color: #757575;
+}
+
+.login-message {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.login-footer {
+    text-align: center;
+    margin-top: 1.6rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid #d8d8d8;
+    font-size: 1rem;
+}
+
+.login-footer a {
+    color: var(--primario);
+    text-decoration: none;
+}
+.login-footer a:hover {
+    text-decoration: underline;
+}
