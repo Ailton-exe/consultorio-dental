@@ -1,4 +1,6 @@
 import { useState } from "react";
+import "../styles/Login.css";
+import { Link } from "react-router-dom";
 
 function Login() {
     const [form, setForm] = useState({
@@ -52,14 +54,20 @@ function Login() {
         }
     };
 
-    return (
-        <div>
-            <h1>Inicio de sesión</h1>
+return (
+    <div className="login-section">
+        <div className="login-container">
+            <form className="login-form" onSubmit={handleSubmit}>
+                <h1>¡Bienvenido de nuevo!</h1>
+                <p>Inicia sesión en tu cuenta</p>
 
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Correo electrónico</label>
+                <div className="campo">
+                    <label className="label-titulo">
+                        Correo electrónico
+                    </label>
+
                     <input
+                        className="input-text"
                         type="email"
                         name="email"
                         value={form.email}
@@ -68,9 +76,13 @@ function Login() {
                     />
                 </div>
 
-                <div>
-                    <label>Contraseña</label>
+                <div className="campo">
+                    <label className="label-titulo">
+                        Contraseña
+                    </label>
+
                     <input
+                        className="input-text"
                         type="password"
                         name="password"
                         value={form.password}
@@ -79,14 +91,21 @@ function Login() {
                     />
                 </div>
 
-                <button type="submit">
+                <button className="boton" type="submit">
                     Iniciar sesión
                 </button>
-            </form>
 
-            <p>{message}</p>
+                <p className="login-message">{message}</p>
+
+                <div className="login-footer">
+                    <Link to="/register">
+                        ¿No tienes una cuenta? Regístrate
+                    </Link>
+                </div>
+            </form>
         </div>
-    );
+    </div>
+);
 }
 
 export default Login;

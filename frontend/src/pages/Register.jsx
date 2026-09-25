@@ -1,4 +1,6 @@
 import { useState } from "react";
+import "../styles/Register.css";
+import { Link } from "react-router-dom";
 
 function Register() {
     const [form, setForm] = useState({
@@ -57,14 +59,20 @@ function Register() {
         }
     };
 
-    return (
-        <div>
-            <h1>Registro de paciente</h1>
+return (
+    <div className="register-section">
+        <div className="register-container">
+            <form className="register-form" onSubmit={handleSubmit}>
+                <h1>¡Bienvenido!</h1>
+                <p>Regístrate para crear tu cuenta</p>
+                
+                <div className="campo">
+                    <label className="label-titulo">
+                        Nombre
+                    </label>
 
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Nombre</label>
                     <input
+                        className="input-text"
                         type="text"
                         name="name"
                         value={form.name}
@@ -73,9 +81,13 @@ function Register() {
                     />
                 </div>
 
-                <div>
-                    <label>Correo electrónico</label>
+                <div className="campo">
+                    <label className="label-titulo">
+                        Correo electrónico
+                    </label>
+
                     <input
+                        className="input-text"
                         type="email"
                         name="email"
                         value={form.email}
@@ -84,9 +96,13 @@ function Register() {
                     />
                 </div>
 
-                <div>
-                    <label>Contraseña</label>
+                <div className="campo">
+                    <label className="label-titulo">
+                        Contraseña
+                    </label>
+
                     <input
+                        className="input-text"
                         type="password"
                         name="password"
                         value={form.password}
@@ -96,14 +112,21 @@ function Register() {
                     />
                 </div>
 
-                <button type="submit">
+                <button className="boton" type="submit">
                     Registrarme
                 </button>
-            </form>
 
-            <p>{message}</p>
+                <p className="register-message">{message}</p>
+
+                <div className="register-footer">
+                    <a href="/login">
+                        ¿Ya tienes una cuenta? Inicia sesión
+                    </a>
+                </div>
+            </form>
         </div>
-    );
+    </div>
+);
 }
 
 export default Register;

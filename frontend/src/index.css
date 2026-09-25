@@ -1,4 +1,20 @@
-:root {
+
+body {
+    font-size: 16px; 
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f3f6fa;
+}
+#root {
+    max-width: 90%;
+    width: 100%;
+}
+
+
+/*:root {
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #fff;
@@ -51,7 +67,11 @@
 }
 
 body {
-  margin: 0;
+      font-size: 16px; 
+    font-family: "Krub", sans-serif;
+    background-color: var(--blanco);
+    display: flex;
+    height: 100vh;
 }
 
 #root {
@@ -59,7 +79,6 @@ body {
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
-  border-inline: 1px solid var(--border);
   min-height: 100svh;
   display: flex;
   flex-direction: column;
@@ -109,3 +128,4 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+*/
