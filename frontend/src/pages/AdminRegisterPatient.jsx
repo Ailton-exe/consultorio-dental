@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { API_URL } from "../config";
 
 function AdminRegisterPatient() {
     const [form, setForm] = useState({
@@ -25,7 +26,7 @@ function AdminRegisterPatient() {
             const token = localStorage.getItem("token");
 
             const response = await fetch(
-                "http://127.0.0.1:8000/api/admin/patients",
+                `${API_URL}/api/admin/patients`,
                 {
                     method: "POST",
                     headers: {

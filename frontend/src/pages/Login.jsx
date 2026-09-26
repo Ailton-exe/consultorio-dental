@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { API_URL } from "../config";
 import "../styles/Login.css";
 import { Link } from "react-router-dom";
 
@@ -24,7 +25,7 @@ function Login() {
 
         try {
             const response = await fetch(
-                "http://127.0.0.1:8000/api/login",
+                `${API_URL}/api/login`,
                 {
                     method: "POST",
                     headers: {
