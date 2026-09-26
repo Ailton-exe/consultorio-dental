@@ -1,6 +1,6 @@
 import { useState } from "react";
+import { API_URL } from "../config";
 import "../styles/Register.css";
-import { Link } from "react-router-dom";
 
 function Register() {
     const [form, setForm] = useState({
