@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap');
+
+:root {
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #0f3d72;
+}
+
+.available-schedules-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2.5rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.available-schedules-container {
+    font-family: 'Fraunces', serif;
+    width: 100%;
+    max-width: 700px;
+}
+
+.available-schedules-form {
+    background-color: var(--blanco);
+    width: 100%;
+    padding: 2rem;
+    border-radius: 18px;
+    box-sizing: border-box;
+    -webkit-box-shadow: 0px 5px 15px 0px rgba(112, 112, 112, 0.42);
+    -moz-box-shadow: 0px 5px 15px 0px rgba(112, 112, 112, 0.42);
+    box-shadow: 0px 5px 15px 0px rgba(112, 112, 112, 0.42);
+}
+
+.available-schedules-form h1 {
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--oscuro);
+}
+
+.available-schedules-form > p {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    color: var(--oscuro);
+}
+
+.available-schedules-campo {
+    margin-bottom: 2rem;
+}
+
+.available-schedules-label {
+    color: var(--oscuro);
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.available-schedules-input {
+    width: 100%;
+    background-color: #f3f6fa;
+    font-family: 'Fraunces', serif;
+    font-size: 14px;
+    border: none;
+    padding: 10px;
+    border-bottom: var(--primario) 4px solid;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+
+.available-schedules-input:focus {
+    outline: none;
+}
+
+.available-schedules-button {
+    background-color: var(--primario);
+    color: var(--blanco);
+    padding: 10px;
+    font-family: 'Fraunces', serif;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    border: none;
+    border-radius: 6px;
+}
+
+.available-schedules-button:hover {
+    cursor: pointer;
+    background-color: #757575;
+}
+
+.available-schedules-message {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.available-schedules-results {
+    margin-top: 2rem;
+}
+
+.available-schedules-results h2 {
+    color: var(--oscuro);
+    font-size: 24px;
+    margin-bottom: 1rem;
+}
+
+.available-schedules-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.available-schedules-item {
+    background-color: #f3f6fa;
+    border-left: 5px solid var(--primario);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
+    font-size: 17px;
+    color: var(--oscuro);
+    box-sizing: border-box;
+}
+
+.available-schedules-item:hover {
+    box-shadow: 0px 3px 10px rgba(112, 112, 112, 0.25);
+}
