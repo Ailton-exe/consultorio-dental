@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import AdminRegisterPatient from "./pages/AdminRegisterPatient";
 import AdminSchedules from "./pages/AdminSchedules";
 import AvailableSchedules from "./pages/AvailableSchedules";
+import BookAppointment from "./pages/BookAppointment";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                 <Route path="/admin/register-patient" element={<AdminRegisterPatient />} />
                 <Route path="/admin/schedules" element={<AdminSchedules />} />
                 <Route path="/available-schedules" element={<AvailableSchedules />} />
+                <Route path="/book-appointment" element={<BookAppointment />} />
             </Routes>
         </BrowserRouter>
     );

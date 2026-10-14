@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap');
+
+:root {
+    --blanco: #ffffff;
+    --oscuro: #212121;
+    --primario: #0f3d72;
+}
+
+/* Contenedor principal */
+.book-appointment-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    min-height: 100vh;
+    padding: 2.5rem;
+    box-sizing: border-box;
+    font-family: 'Fraunces', serif;
+}
+
+/* Contenedor de contenido */
+.book-appointment-container {
+    width: 100%;
+    max-width: 700px;
+}
+
+/* Tarjetas */
+.book-appointment-card {
+    width: 100%;
+    padding: 2rem;
+    margin-bottom: 1.8rem;
+    background-color: var(--blanco);
+    border-radius: 18px;
+    box-sizing: border-box;
+    box-shadow: 0 5px 15px rgba(112, 112, 112, 0.25);
+}
+
+/* Títulos */
+.book-appointment-card h1 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--oscuro);
+    font-size: 35px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.book-appointment-card h2 {
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+    color: var(--oscuro);
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.book-appointment-description {
+    margin-top: 0;
+    margin-bottom: 2rem;
+    color: #555555;
+    font-size: 17px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* Formulario */
+.book-appointment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.book-appointment-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.book-appointment-label {
+    color: var(--oscuro);
+    font-weight: 700;
+}
+
+.book-appointment-input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-bottom: 4px solid var(--primario);
+    border-radius: 6px;
+    background-color: #f3f6fa;
+    color: var(--oscuro);
+    font-family: inherit;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.book-appointment-input:focus {
+    outline: 2px solid var(--primario);
+    outline-offset: 2px;
+}
+
+/* Botones generales */
+.book-appointment-button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--primario);
+    color: var(--blanco);
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease,
+                transform 0.2s ease;
+}
+
+.book-appointment-button:hover:not(:disabled) {
+    background-color: #194f89;
+    transform: translateY(-1px);
+}
+
+.book-appointment-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Lista de horarios */
+.book-appointment-slots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 12px;
+}
+
+.book-appointment-slot {
+    padding: 14px 10px;
+    border: 2px solid var(--primario);
+    border-radius: 8px;
+    background-color: var(--blanco);
+    color: var(--primario);
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease,
+                color 0.2s ease;
+}
+
+.book-appointment-slot:hover:not(:disabled) {
+    background-color: #eaf1f9;
+}
+
+.book-appointment-slot.selected {
+    background-color: var(--primario);
+    color: var(--blanco);
+}
+
+.book-appointment-slot:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Resumen de la cita */
+.book-appointment-summary {
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.5rem;
+    border-left: 5px solid var(--primario);
+    border-radius: 8px;
+    background-color: #f3f6fa;
+}
+
+.book-appointment-summary p {
+    margin: 0.5rem 0;
+    color: var(--oscuro);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.book-appointment-confirm {
+    width: 100%;
+}
+
+/* Mensajes de estado */
+.book-appointment-message {
+    padding: 12px;
+    margin: 1rem 0 0;
+    border-radius: 8px;
+    background-color: #f3f6fa;
+    color: var(--oscuro);
+    font-size: 15px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.book-appointment-message:empty {
+    display: none;
+}
+
+/* Enlaces inferiores */
+.book-appointment-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 1.5rem;
+    text-align: center;
+    font-size: 15px;
+}
+
+.book-appointment-links a {
+    color: var(--primario);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.book-appointment-links a:hover {
+    text-decoration: underline;
+}
+
+/* Adaptación a celulares */
+@media (max-width: 600px) {
+    .book-appointment-section {
+        padding: 1rem;
+    }
+
+    .book-appointment-card {
+        padding: 1.4rem;
+        border-radius: 14px;
+    }
+
+    .book-appointment-card h1 {
+        font-size: 28px;
+    }
+
+    .book-appointment-card h2 {
+        font-size: 22px;
+    }
+
+    .book-appointment-description {
+        font-size: 15px;
+    }
+
+    .book-appointment-slots {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
