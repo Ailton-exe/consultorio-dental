@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminPatientController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\AppointmentController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -22,3 +23,16 @@ Route::post('/admin/schedules', [ScheduleController::class, 'store'])
     
 Route::put('/admin/schedules/{schedule}', [ScheduleController::class, 'update'])
     ->middleware('auth:sanctum');
+
+// Rutas para las citas
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get(
+        '/available-slots',
+        [AppointmentController::class, 'availableSlots']
+    );
+
+    Route::post(
+        '/appointments',
+        [AppointmentController::class, 'store']
+    );
+});
