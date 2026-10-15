@@ -88,7 +88,7 @@ function BookAppointment() {
                     },
                     body: JSON.stringify({
                         date,
-                        start_time: selectedSlot.start_time
+                        start_time: selectedSlot.start_time.slice(0, 5)
                     })
                 }
             );
