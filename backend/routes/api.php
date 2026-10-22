@@ -54,7 +54,6 @@ Route::middleware('auth:sanctum')->group(function () {
     
     Route::patch(
         '/admin/appointments/{appointment}/status',
-        [AppointmentManagementController::class,
-        'updateStatus',]
+        [AppointmentManagementController::class, 'updateStatus',]
     );
 });
