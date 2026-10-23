@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminPatientController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\AppointmentManagementController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -34,5 +35,25 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post(
         '/appointments',
         [AppointmentController::class, 'store']
+    );
+
+    Route::get(
+        '/my-appointments', 
+        [AppointmentManagementController::class, 'mine',]
+    );
+    
+    Route::patch(
+        '/my-appointments/{appointment}/cancel', 
+        [AppointmentManagementController::class, 'cancelMine',]
+    );
+    
+    Route::get(
+        '/admin/appointments',
+        [AppointmentManagementController::class, 'indexAdmin',]
+    );
+    
+    Route::patch(
+        '/admin/appointments/{appointment}/status',
+        [AppointmentManagementController::class, 'updateStatus',]
     );
 });

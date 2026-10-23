@@ -75,6 +75,7 @@ class AppointmentController extends Controller
                     )
                         ->where('start_time', '<', $end->format('H:i:s'))
                         ->where('end_time', '>', $start->format('H:i:s'))
+                        ->where('status', '!=', 'cancelled')
                         ->exists();
 
                     if (!$occupied) {
