@@ -8,6 +8,7 @@ import AvailableSchedules from "./pages/AvailableSchedules";
 import BookAppointment from "./pages/BookAppointment";
 import MyAppointments from "./pages/MyAppointments";
 import AdminAppointments from "./pages/AdminAppointments";
+import AdminBookAppointment from "./pages/AdminBookAppointment";
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                 <Route path="/book-appointment" element={<BookAppointment />} />
                 <Route path="/my-appointments" element={<MyAppointments />} />
                 <Route path="/admin/appointments" element={<AdminAppointments />} />
+                <Route path="/admin/book-appointment" element={<AdminBookAppointment />} />
             </Routes>
         </BrowserRouter>
     );

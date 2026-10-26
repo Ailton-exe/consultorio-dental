@@ -234,6 +234,7 @@ function AdminAppointments() {
         )}
 
         <footer className="appointments-footer">
+          <Link to="/admin/book-appointment">Registrar cita manual</Link>
           <Link to="/login">Volver al inicio de sesión</Link>
         </footer>
       </div>
