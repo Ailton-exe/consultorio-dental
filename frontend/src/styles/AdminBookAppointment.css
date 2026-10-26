@@ -1,0 +1,360 @@
+/* ========================================
+   REGISTRO MANUAL DE CITAS
+   Consultorio dental
+======================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap');
+
+.admin-book-page {
+  min-height: 100vh;
+  padding: 48px 24px;
+  background: #f4f7fb;
+  color: #212121;
+  font-family: 'Fraunces', Georgia, serif;
+  box-sizing: border-box;
+}
+
+.admin-book-page *,
+.admin-book-page *::before,
+.admin-book-page *::after {
+  box-sizing: border-box;
+}
+
+.admin-book-container {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.admin-book-header {
+  margin-bottom: 28px;
+}
+
+.admin-book-eyebrow {
+  display: inline-block;
+  margin-bottom: 10px;
+  color: #0f3d72;
+  font-family: Arial, sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+}
+
+.admin-book-header h1 {
+  margin: 0 0 12px;
+  color: #163b65;
+  font-size: clamp(2rem, 4vw, 2.7rem);
+  line-height: 1.2;
+}
+
+.admin-book-header > p {
+  max-width: 620px;
+  margin: 0;
+  color: #65758b;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Tarjeta principal */
+
+.admin-book-card {
+  padding: 32px;
+  border: 1px solid #e5ebf3;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 8px 28px rgb(26 52 83 / 6%);
+}
+
+.admin-book-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #edf0f5;
+}
+
+.admin-book-heading-icon {
+  display: flex;
+  flex: 0 0 50px;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  background: #eaf2fc;
+  color: #0f3d72;
+  font-family: Arial, sans-serif;
+  font-size: 1.5rem;
+}
+
+.admin-book-card-heading h2 {
+  margin: 0 0 6px;
+  color: #243c58;
+  font-size: 1.35rem;
+}
+
+.admin-book-card-heading p {
+  margin: 0;
+  color: #758197;
+  font-family: Arial, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Formulario */
+
+.admin-book-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.admin-book-field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+}
+
+.admin-book-field label {
+  color: #293d56;
+  font-family: Arial, sans-serif;
+  font-size: 0.91rem;
+  font-weight: 700;
+}
+
+.admin-book-field input,
+.admin-book-field select {
+  width: 100%;
+  min-height: 49px;
+  padding: 12px 14px;
+  border: 1px solid #dce4ef;
+  border-radius: 10px;
+  outline: none;
+  background: #f8fafd;
+  color: #26384d;
+  font-family: Arial, sans-serif;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-book-field input:focus,
+.admin-book-field select:focus {
+  border-color: #0f3d72;
+  box-shadow: 0 0 0 3px rgb(15 61 114 / 10%);
+}
+
+.admin-book-field input::placeholder {
+  color: #9aa6b7;
+}
+
+.admin-book-field select:disabled {
+  cursor: not-allowed;
+  background: #edf1f6;
+  color: #8994a4;
+}
+
+.admin-book-hint {
+  color: #7a8799;
+  font-family: Arial, sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+/* Selección de horario */
+
+.admin-book-slot-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.admin-book-secondary-button {
+  min-height: 49px;
+  padding: 12px 18px;
+  border: 1px solid #0f3d72;
+  border-radius: 10px;
+  background: #fff;
+  color: #0f3d72;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.admin-book-secondary-button:hover:not(:disabled) {
+  background: #eaf2fc;
+}
+
+.admin-book-secondary-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.admin-book-selection {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  border: 1px solid #b7e4c7;
+  border-radius: 11px;
+  background: #effaf2;
+}
+
+.admin-book-selection-icon {
+  display: flex;
+  flex: 0 0 32px;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #d6f1df;
+  color: #247341;
+  font-family: Arial, sans-serif;
+  font-weight: 700;
+}
+
+.admin-book-selection strong {
+  color: #216e3a;
+  font-family: Arial, sans-serif;
+  font-size: 0.9rem;
+}
+
+.admin-book-selection p {
+  margin: 5px 0 0;
+  color: #39764d;
+  font-family: Arial, sans-serif;
+  font-size: 0.85rem;
+}
+
+/* Botón principal */
+
+.admin-book-submit-button {
+  width: 100%;
+  min-height: 50px;
+  margin-top: 4px;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #0f3d72;
+  color: #fff;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.admin-book-submit-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  background: #174f8e;
+}
+
+.admin-book-submit-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+/* Mensajes de éxito y error */
+
+.admin-book-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  margin: 0 0 20px;
+  padding: 15px 17px;
+  border: 1px solid transparent;
+  border-radius: 11px;
+  font-family: Arial, sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.admin-book-alert.success {
+  border-color: #b7e4c7;
+  background: #eaf8ef;
+  color: #216e3a;
+}
+
+.admin-book-alert.error {
+  border-color: #f1b9bd;
+  background: #fff0f0;
+  color: #a52732;
+}
+
+.admin-book-alert-icon {
+  display: inline-flex;
+  flex: 0 0 23px;
+  align-items: center;
+  justify-content: center;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  background: rgb(0 0 0 / 5%);
+  font-weight: 700;
+}
+
+/* Navegación inferior */
+
+.admin-book-footer {
+  margin-top: 26px;
+  text-align: center;
+}
+
+.admin-book-footer a {
+  color: #0f3d72;
+  font-family: Arial, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.admin-book-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Adaptación a dispositivos móviles */
+
+@media (max-width: 600px) {
+  .admin-book-page {
+    padding: 30px 16px;
+  }
+
+  .admin-book-header h1 {
+    font-size: 2rem;
+  }
+
+  .admin-book-card {
+    padding: 22px 18px;
+    border-radius: 14px;
+  }
+
+  .admin-book-card-heading {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .admin-book-heading-icon {
+    flex-basis: 42px;
+    width: 42px;
+    height: 42px;
+    font-size: 1.25rem;
+  }
+
+  .admin-book-card-heading h2 {
+    font-size: 1.15rem;
+  }
+
+  .admin-book-slot-row {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-book-secondary-button {
+    width: 100%;
+  }
+}
