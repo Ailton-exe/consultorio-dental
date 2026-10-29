@@ -8,6 +8,7 @@ use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AppointmentManagementController;
 use App\Http\Controllers\AppointmentReminderController;
+use App\Http\Controllers\ManualAppointmentController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();

@@ -13,12 +13,12 @@ class ManualAppointmentController extends Controller
 {
     public function store(Request $request)
     {
-        abort_unless(
-            $request->user()
+        /*abort_unless(
+        //    $request->user()
                 && $request->user()->role === 'admin',
             403,
             'Solo el administrador puede registrar citas manuales.'
-        );
+        );*/
 
         $validated = $request->validate([
             'email' => 'required|email|exists:users,email',
@@ -35,13 +35,25 @@ class ManualAppointmentController extends Controller
             $validated,
             $patient
         ) {
-            $schedule = Schedule::whereDate(
-                'date',
-                $validated['date']
-            )->where(
-                'start_time',
-                $validated['start_time']
-            )->lockForUpdate()->first();
+            $dayNames = [
+                1 => 'lunes',
+                2 => 'martes',
+                3 => 'miércoles',
+                4 => 'jueves',
+                5 => 'viernes',
+                6 => 'sábado',
+                7 => 'domingo',
+            ];
+
+            $day = $dayNames[
+                \Carbon\Carbon::parse($validated['date'])->dayOfWeekIso
+            ];
+
+            $schedule = Schedule::where('day', $day)
+                ->where('start_time', '<=', $validated['start_time'])
+                ->where('end_time', '>', $validated['start_time'])
+                ->lockForUpdate()
+                ->first();
 
             if (!$schedule) {
                 throw ValidationException::withMessages([
@@ -68,10 +80,16 @@ class ManualAppointmentController extends Controller
                 ]);
             }
 
+            $endTime = \Carbon\Carbon::createFromFormat(
+                'H:i',
+                $validated['start_time']
+            )->addMinutes(60)->format('H:i:s');
+
             return Appointment::create([
                 'user_id' => $patient->id,
                 'appointment_date' => $validated['date'],
                 'start_time' => $validated['start_time'],
+                'end_time' => $endTime,
                 'status' => 'confirmed',
             ]);
         });

@@ -14,17 +14,15 @@ class AppointmentManagementController extends Controller
      * GET /api/my-appointments
      * Mostrar las citas del paciente que inició sesión.
      */
+    
     public function mine(Request $request)
     {
-        return response()->json([
-        'usuario_autenticado' => $request->user(),
-        'id_usuario' => $request->user()->id,
-        'citas' => Appointment::all()
-        ]);
         $appointments = Appointment::where(
             'user_id',
             $request->user()->id
         )
+            ->whereDate('appointment_date', '>=', now()->toDateString())
+            ->whereIn('status', ['pending', 'confirmed'])
             ->orderBy('appointment_date')
             ->orderBy('start_time')
             ->get();
@@ -33,6 +31,7 @@ class AppointmentManagementController extends Controller
             'appointments' => $appointments
         ]);
     }
+
 
     /**
      * PATCH /api/my-appointments/{appointment}/cancel
