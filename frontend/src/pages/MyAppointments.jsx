@@ -88,9 +88,12 @@ function MyAppointments() {
   function formatDate(date) {
     if (!date) return "No disponible";
 
-    const [year, month, day] = date.split("-");
+    const dateOnly = date.split("T")[0];
+    const [year, month, day] = dateOnly.split("-");
+
     return `${day}/${month}/${year}`;
   }
+
 
   function formatTime(time) {
     return time?.slice(0, 5) || "";
