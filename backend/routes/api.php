@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminPatientController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AppointmentManagementController;
+use App\Http\Controllers\AppointmentReminderController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -55,5 +56,15 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::patch(
         '/admin/appointments/{appointment}/status',
         [AppointmentManagementController::class, 'updateStatus',]
+    );
+
+    Route::post(
+        '/admin/appointments/manual', 
+        [ManualAppointmentController::class,'store',]
+    );
+
+    Route::get(
+        '/my-reminders', 
+        [AppointmentReminderController::class,'mine',]
     );
 });

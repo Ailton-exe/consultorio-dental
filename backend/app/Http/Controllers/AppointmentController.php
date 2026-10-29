@@ -184,6 +184,8 @@ class AppointmentController extends Controller
                 ]);
             });
 
+            $appointment->load('user');
+            
             return response()->json([
                 'message' => 'La cita se reservó correctamente.',
                 'appointment' => $appointment,
@@ -197,6 +199,7 @@ class AppointmentController extends Controller
             if (
                 in_array($e->errorInfo[1] ?? null, [1062, 19], true)
             ) {
+
                 return response()->json([
                     'message' => 'El horario ya fue reservado.',
                 ], 409);
