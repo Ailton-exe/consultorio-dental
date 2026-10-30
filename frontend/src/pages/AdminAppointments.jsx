@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import "../styles/Appointments.css";
 
 import { API_URL as BASE_URL } from "../config";

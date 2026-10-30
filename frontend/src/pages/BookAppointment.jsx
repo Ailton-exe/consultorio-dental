@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { API_URL } from "../config";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import "../styles/BookAppointment.css";
 
 function BookAppointment() {
