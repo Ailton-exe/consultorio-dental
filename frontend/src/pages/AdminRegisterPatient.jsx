@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { API_URL } from "../config";
+import "../styles/AdminRegisterPatient.css";
 
 function AdminRegisterPatient() {
     const [form, setForm] = useState({
@@ -62,47 +63,49 @@ function AdminRegisterPatient() {
     };
 
     return (
-        <div>
-            <h1>Registrar paciente</h1>
+        <div className="admin-reg-section">
+            <div className="admin-reg-container">
+                <form className="admin-reg-form" onSubmit={handleSubmit}>
+                    <h1>Registrar paciente</h1>
+                    <div className="campo">
+                        <label className="label-titulo" htmlFor="name">
+                            Nombre completo
+                        </label>
 
-            <form onSubmit={handleSubmit}>
-
-                <div>
-                    <label htmlFor="name">
-                        Nombre completo
-                    </label>
-
-                    <input
+                        <input
+                        className="input-text"
                         id="name"
                         type="text"
                         name="name"
                         value={form.name}
                         onChange={handleChange}
                         required
-                    />
-                </div>
+                        />
+                    </div>
 
-                <div>
-                    <label htmlFor="email">
-                        Correo electrónico
-                    </label>
+                    <div className="campo">
+                        <label className="label-titulo" htmlFor="email">
+                            Correo electrónico
+                        </label>
 
-                    <input
+                        <input
+                        className="input-text"
                         id="email"
                         type="email"
                         name="email"
                         value={form.email}
                         onChange={handleChange}
                         required
-                    />
-                </div>
+                        />
+                    </div>
 
-                <div>
-                    <label htmlFor="password">
-                        Contraseña
-                    </label>
+                    <div className="campo">
+                        <label className="label-titulo" htmlFor="password">
+                            Contraseña
+                        </label>
 
-                    <input
+                        <input
+                        className="input-text"
                         id="password"
                         type="password"
                         name="password"
@@ -110,16 +113,15 @@ function AdminRegisterPatient() {
                         onChange={handleChange}
                         required
                         minLength="8"
-                    />
-                </div>
+                        />
+                    </div>
 
-                <button type="submit">
-                    Registrar paciente
-                </button>
-
-            </form>
-
+                    <button type="submit" className="boton">
+                        Registrar paciente
+                    </button>
+                </form>
             <p>{message}</p>
+            </div>
         </div>
     );
 }

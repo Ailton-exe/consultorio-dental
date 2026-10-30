@@ -119,9 +119,9 @@ return (
                 <p className="register-message">{message}</p>
 
                 <div className="register-footer">
-                    <a href="/login">
+                    <Link to="/login">
                         ¿Ya tienes una cuenta? Inicia sesión
-                    </a>
+                    </Link>
                 </div>
             </form>
         </div>
