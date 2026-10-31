@@ -10,10 +10,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Eliminar el índice único anterior.
-        DB::statement(
-            'DROP INDEX IF EXISTS appointments_appointment_date_start_time_unique'
-        );
+        // Eliminar la restricción única anterior (en PostgreSQL
+        // $table->unique() crea una constraint, no solo un índice).
+        DB::statement('
+            ALTER TABLE appointments
+            DROP CONSTRAINT IF EXISTS appointments_appointment_date_start_time_unique
+        ');
 
         // Permitir repetir un horario únicamente si
         // la cita anterior está cancelada.
@@ -35,9 +37,10 @@ return new class extends Migration
         );
 
         // Restaurar la restricción original.
-        DB::statement("
-            CREATE UNIQUE INDEX appointments_appointment_date_start_time_unique
-            ON appointments (appointment_date, start_time)
-        ");
+        DB::statement('
+            ALTER TABLE appointments
+            ADD CONSTRAINT appointments_appointment_date_start_time_unique
+            UNIQUE (appointment_date, start_time)
+        ');
     }
 };

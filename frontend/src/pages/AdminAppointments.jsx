@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import "../styles/Appointments.css";
 
-const API_URL = "http://127.0.0.1:8000/api";
+import { API_URL as BASE_URL } from "../config";
+
+const API_URL = `${BASE_URL}/api`;
 
 function AdminAppointments() {
   const [appointments, setAppointments] = useState([]);
