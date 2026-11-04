@@ -9,6 +9,7 @@ import BookAppointment from "./pages/BookAppointment";
 import MyAppointments from "./pages/MyAppointments";
 import AdminAppointments from "./pages/AdminAppointments";
 import AdminBookAppointment from "./pages/AdminBookAppointment";
+import NotFound from "./pages/NotFound";
 
 function App() {
     return (
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/my-appointments" element={<MyAppointments />} />
                 <Route path="/admin/appointments" element={<AdminAppointments />} />
                 <Route path="/admin/book-appointment" element={<AdminBookAppointment />} />
+                <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>
     );
