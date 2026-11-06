@@ -14,7 +14,7 @@ class HealthController extends Controller
                 'status' => 'ok',
                 'message' => 'La API está funcionando correctamente.',
                 'database' => 'connected',
-            ]);
+            ], 200);
         } catch (\Throwable $exception) {
             return response()->json([
                 'status' => 'error',
