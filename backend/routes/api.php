@@ -9,6 +9,9 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\AppointmentManagementController;
 use App\Http\Controllers\AppointmentReminderController;
 use App\Http\Controllers\ManualAppointmentController;
+use App\Http\Controllers\HealthController;
+
+Route::get('/health', [HealthController::class, 'index']);
 
 Route::get('/user', function (Request $request) {
     return $request->user();
