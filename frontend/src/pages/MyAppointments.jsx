@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import "../styles/Appointments.css";
+import LogoutButton from "../components/LogoutButton";
 
 const API_URL = "http://127.0.0.1:8000/api";
 
@@ -124,12 +125,16 @@ function MyAppointments() {
             </p>
           </div>
 
-          <Link
-            className="appointments-link-button"
-            to="/horarios"
-          >
-            + Consultar horarios
-          </Link>
+          <div className="appointments-links">
+            <Link
+              className="appointments-link-button"
+              to="/available-schedules"
+            >
+              + Consultar horarios
+            </Link>
+            <LogoutButton />
+          </div>
+          
         </header>
 
         {message && (
@@ -157,7 +162,7 @@ function MyAppointments() {
               Cuando reserves una cita, podrás consultar aquí la fecha,
               el horario y su estado.
             </p>
-            <Link className="appointments-primary-button" to="/reservar">
+            <Link className="appointments-primary-button" to="/book-appointment">
               Reservar una cita
             </Link>
           </section>

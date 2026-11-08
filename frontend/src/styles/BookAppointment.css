@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap');
-
+body{
+    height: 95vh;
+}
 :root {
     --blanco: #ffffff;
     --oscuro: #212121;
@@ -10,7 +12,8 @@
 .book-appointment-section {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    
     width: 100%;
     min-height: 100vh;
     padding: 2.5rem;

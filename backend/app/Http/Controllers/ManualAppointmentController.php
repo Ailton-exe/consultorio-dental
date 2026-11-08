@@ -13,12 +13,12 @@ class ManualAppointmentController extends Controller
 {
     public function store(Request $request)
     {
-        /*abort_unless(
-        //    $request->user()
+        abort_unless(
+            $request->user()
                 && $request->user()->role === 'admin',
             403,
             'Solo el administrador puede registrar citas manuales.'
-        );*/
+        );
 
         $validated = $request->validate([
             'email' => 'required|email|exists:users,email',

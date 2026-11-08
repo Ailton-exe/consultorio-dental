@@ -14,12 +14,11 @@ function NotFound() {
         <h1>Página no encontrada</h1>
 
         <p>
-          Lo sentimos, la página que buscas no existe o la dirección
-          es incorrecta.
+          Lo sentimos, la página que buscas no existe o la dirección es incorrecta.
         </p>
 
-        <Link to="/login" className="not-found-button">
-          Volver al inicio de sesión
+        <Link to="/admin/appointments" className="not-found-button">
+          Volver a la administración de citas
         </Link>
 
         <span className="not-found-footer">

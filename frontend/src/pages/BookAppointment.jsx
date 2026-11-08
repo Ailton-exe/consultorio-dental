@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link } from "react-router";
 import "../styles/BookAppointment.css";
@@ -265,14 +264,8 @@ function BookAppointment() {
 
             {/* Navegación */}
             <nav className="book-appointment-links">
-                <Link to="/available-schedules">
-                    Consultar horarios
-                </Link>
-
-                <span aria-hidden="true">·</span>
-
-                <Link to="/login">
-                    Volver al inicio de sesión
+                <Link to="/my-appointments">
+                    Volver a mis citas
                 </Link>
             </nav>
 

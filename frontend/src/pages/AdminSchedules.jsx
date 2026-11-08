@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 import "../styles/AdminSchedules.css";
 
 function AdminSchedules() {
@@ -141,8 +142,17 @@ function AdminSchedules() {
                         {message}
                     </p>
                 </form>
+
+                <footer className="admin-book-footer">
+                    <Link to="/admin/appointments">
+                        ← Volver a administración de citas
+                    </Link>
+                </footer>
+
             </div>
         </section>
+
+        
     );
 }
 
