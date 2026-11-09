@@ -1,8 +1,10 @@
 import { useState } from "react";
 import "../styles/Register.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Register() {
+    const navigate = useNavigate();
+
     const [form, setForm] = useState({
         name: "",
         email: "",
@@ -39,9 +41,7 @@ function Register() {
             const data = await response.json();
 
             if (!response.ok) {
-                setMessage(
-                    data.message || "No se pudo registrar el usuario."
-                );
+                setMessage(data.message || "No se pudo registrar el usuario.");
                 return;
             }
 
@@ -53,9 +53,11 @@ function Register() {
                 password: ""
             });
 
+            navigate("/login");
+
         } catch (error) {
-            console.error(error);
-            setMessage("No se pudo conectar con el servidor.");
+            console.error("Error durante el registro:", error);
+            setMessage("Ocurrió un error al comunicarse con el servidor.");
         }
     };
 
