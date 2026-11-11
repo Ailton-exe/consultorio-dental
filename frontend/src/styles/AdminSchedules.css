@@ -6,6 +6,9 @@
     --primario: #0f3d72;
 }
 
+body{
+    height: 95vh;
+}
 .admin-schedules-section {
     display: flex;
     justify-content: center;

@@ -39,6 +39,10 @@
   letter-spacing: 1.8px;
 }
 
+.appointments-links{
+  display: flex;
+  gap: 15px;
+}
 .appointments-header h1 {
   margin: 0 0 10px;
   color: #163b65;
@@ -427,3 +431,4 @@
     width: 100%;
   }
 }
+

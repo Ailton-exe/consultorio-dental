@@ -1,27 +1,41 @@
+
 import { useState } from "react";
 import { API_URL } from "../config";
+import { Link } from "react-router-dom";
 import "../styles/AvailableSchedules.css";
 
 function AvailableSchedules() {
     const [date, setDate] = useState("");
-    const [schedules, setSchedules] = useState([]);
+    const [slots, setSlots] = useState([]);
     const [message, setMessage] = useState("");
+    const [loading, setLoading] = useState(false);
+
+    const today = new Date();
+
+    const localToday = [
+        today.getFullYear(),
+        String(today.getMonth() + 1).padStart(2, "0"),
+        String(today.getDate()).padStart(2, "0")
+    ].join("-");
 
     const handleSearch = async (e) => {
         e.preventDefault();
 
-        if (!date) {
-            setMessage("Selecciona una fecha.");
+        setMessage("");
+        setSlots([]);
+
+        if (date < localToday) {
+            setMessage("Selecciona una fecha de hoy o posterior.");
             return;
         }
 
-        setMessage("Consultando horarios...");
+        setLoading(true);
 
         try {
             const token = localStorage.getItem("token");
 
             const response = await fetch(
-                `${API_URL}/api/schedules?date=${date}`,
+                `${API_URL}/api/available-slots?date=${date}`,
                 {
                     headers: {
                         "Accept": "application/json",
@@ -39,16 +53,21 @@ function AvailableSchedules() {
                 return;
             }
 
-            setSchedules(data.schedules || []);
-            setMessage("");
+            setSlots(data.slots || []);
+
+            if (!data.slots?.length) {
+                setMessage("No hay horarios disponibles para esta fecha.");
+            }
 
         } catch (error) {
             console.error(error);
             setMessage("No se pudo conectar con el servidor.");
+        } finally {
+            setLoading(false);
         }
     };
 
-   return (
+    return (
         <section className="available-schedules-section">
             <div className="available-schedules-container">
 
@@ -75,6 +94,7 @@ function AvailableSchedules() {
                             id="date"
                             type="date"
                             value={date}
+                            min={localToday}
                             onChange={(e) => setDate(e.target.value)}
                             required
                         />
@@ -83,33 +103,43 @@ function AvailableSchedules() {
                     <button
                         className="available-schedules-button"
                         type="submit"
+                        disabled={loading}
                     >
-                        Consultar horarios
+                        {loading ? "Consultando..." : "Consultar horarios"}
                     </button>
 
                     {message && (
-                        <p className="available-schedules-message">
+                        <p
+                            className="available-schedules-message"
+                            role="status"
+                        >
                             {message}
                         </p>
                     )}
 
-                    {schedules.length > 0 && (
+                    {slots.length > 0 && (
                         <div className="available-schedules-results">
                             <h2>Horarios disponibles</h2>
 
                             <ul className="available-schedules-list">
-                                {schedules.map((schedule) => (
+                                {slots.map((slot) => (
                                     <li
                                         className="available-schedules-item"
-                                        key={schedule.id}
+                                        key={slot.start_time}
                                     >
-                                        {schedule.start_time} - {schedule.end_time}
+                                        {slot.start_time.slice(0, 5)}
                                     </li>
                                 ))}
                             </ul>
                         </div>
                     )}
                 </form>
+
+                <footer className="admin-book-footer">
+                    <Link to="/my-appointments">
+                        ← Volver a mis citas
+                    </Link>
+                </footer>
 
             </div>
         </section>

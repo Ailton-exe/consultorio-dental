@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Appointments.css";
+import LogoutButton from "../components/LogoutButton";
 
 import { API_URL as BASE_URL } from "../config";
 
@@ -90,9 +91,12 @@ function MyAppointments() {
   function formatDate(date) {
     if (!date) return "No disponible";
 
-    const [year, month, day] = date.split("-");
+    const dateOnly = date.split("T")[0];
+    const [year, month, day] = dateOnly.split("-");
+
     return `${day}/${month}/${year}`;
   }
+
 
   function formatTime(time) {
     return time?.slice(0, 5) || "";
@@ -123,12 +127,16 @@ function MyAppointments() {
             </p>
           </div>
 
-          <Link
-            className="appointments-link-button"
-            to="/horarios"
-          >
-            + Consultar horarios
-          </Link>
+          <div className="appointments-links">
+            <Link
+              className="appointments-link-button"
+              to="/available-schedules"
+            >
+              + Consultar horarios
+            </Link>
+            <LogoutButton />
+          </div>
+          
         </header>
 
         {message && (
@@ -156,7 +164,7 @@ function MyAppointments() {
               Cuando reserves una cita, podrás consultar aquí la fecha,
               el horario y su estado.
             </p>
-            <Link className="appointments-primary-button" to="/reservar">
+            <Link className="appointments-primary-button" to="/book-appointment">
               Reservar una cita
             </Link>
           </section>

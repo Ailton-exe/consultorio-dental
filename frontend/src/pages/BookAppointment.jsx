@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { API_URL } from "../config";
 import { Link } from "react-router-dom";
@@ -266,14 +265,8 @@ function BookAppointment() {
 
             {/* Navegación */}
             <nav className="book-appointment-links">
-                <Link to="/available-schedules">
-                    Consultar horarios
-                </Link>
-
-                <span aria-hidden="true">·</span>
-
-                <Link to="/login">
-                    Volver al inicio de sesión
+                <Link to="/my-appointments">
+                    Volver a mis citas
                 </Link>
             </nav>
 

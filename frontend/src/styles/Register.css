@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap');
-
+body{
+    height: 95vh;
+}
 :root {
     --blanco: #ffffff;
     --oscuro: #212121;

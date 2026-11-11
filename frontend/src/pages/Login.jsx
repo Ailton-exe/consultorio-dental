@@ -1,9 +1,12 @@
+
 import { useState } from "react";
 import { API_URL } from "../config";
+import { Link, useNavigate } from "react-router-dom";
 import "../styles/Login.css";
-import { Link } from "react-router-dom";
 
 function Login() {
+    const navigate = useNavigate();
+
     const [form, setForm] = useState({
         email: "",
         password: ""
@@ -45,9 +48,20 @@ function Login() {
                 return;
             }
 
+            // Guardar token y datos del usuario
             localStorage.setItem("token", data.token);
+            localStorage.setItem("user", JSON.stringify(data.user));
 
-            setMessage("Inicio de sesión correcto.");
+            // Redirigir según el rol
+            if (data.user.role === "admin") {
+                navigate("/admin/appointments");
+            } else if (data.user.role === "patient") {
+                navigate("/my-appointments");
+            } else {
+                localStorage.removeItem("token");
+                localStorage.removeItem("user");
+                setMessage("El usuario no tiene un rol válido.");
+            }
 
         } catch (error) {
             console.error(error);
@@ -55,58 +69,58 @@ function Login() {
         }
     };
 
-return (
-    <div className="login-section">
-        <div className="login-container">
-            <form className="login-form" onSubmit={handleSubmit}>
-                <h1>¡Bienvenido de nuevo!</h1>
-                <p>Inicia sesión en tu cuenta</p>
+    return (
+        <div className="login-section">
+            <div className="login-container">
+                <form className="login-form" onSubmit={handleSubmit}>
+                    <h1>¡Bienvenido de nuevo!</h1>
+                    <p>Inicia sesión en tu cuenta</p>
 
-                <div className="campo">
-                    <label className="label-titulo">
-                        Correo electrónico
-                    </label>
+                    <div className="campo">
+                        <label className="label-titulo">
+                            Correo electrónico
+                        </label>
 
-                    <input
-                        className="input-text"
-                        type="email"
-                        name="email"
-                        value={form.email}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
+                        <input
+                            className="input-text"
+                            type="email"
+                            name="email"
+                            value={form.email}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
 
-                <div className="campo">
-                    <label className="label-titulo">
-                        Contraseña
-                    </label>
+                    <div className="campo">
+                        <label className="label-titulo">
+                            Contraseña
+                        </label>
 
-                    <input
-                        className="input-text"
-                        type="password"
-                        name="password"
-                        value={form.password}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
+                        <input
+                            className="input-text"
+                            type="password"
+                            name="password"
+                            value={form.password}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
 
-                <button className="boton" type="submit">
-                    Iniciar sesión
-                </button>
+                    <button className="boton" type="submit">
+                        Iniciar sesión
+                    </button>
 
-                <p className="login-message">{message}</p>
+                    <p className="login-message">{message}</p>
 
-                <div className="login-footer">
-                    <Link to="/register">
-                        ¿No tienes una cuenta? Regístrate
-                    </Link>
-                </div>
-            </form>
+                    <div className="login-footer">
+                        <Link to="/register">
+                            ¿No tienes una cuenta? Regístrate
+                        </Link>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-);
+    );
 }
 
 export default Login;

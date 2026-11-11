@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Appointments.css";
+import LogoutButton from "../components/LogoutButton";
 
 import { API_URL as BASE_URL } from "../config";
 
@@ -80,7 +81,9 @@ function AdminAppointments() {
   function formatDate(date) {
     if (!date) return "No disponible";
 
-    const [year, month, day] = date.split("-");
+    const dateOnly = date.split("T")[0];
+    const [year, month, day] = dateOnly.split("-");
+
     return `${day}/${month}/${year}`;
   }
 
@@ -109,12 +112,23 @@ function AdminAppointments() {
             </p>
           </div>
 
-          <Link
-            className="appointments-link-button"
-            to="/admin/horarios"
-          >
+          <div className="appointments-links">
+            <Link
+              className="appointments-link-button"
+              to="/admin/book-appointment"
+            >
+            Registrar cita manual
+            </Link>
+
+            <Link
+              className="appointments-link-button"
+              to="/admin/schedules"
+            >
             Administrar horarios
-          </Link>
+            </Link>
+            <LogoutButton />
+          </div>
+         
         </header>
 
         {message && (
@@ -236,8 +250,7 @@ function AdminAppointments() {
         )}
 
         <footer className="appointments-footer">
-          <Link to="/admin/book-appointment">Registrar cita manual</Link>
-          <Link to="/login">Volver al inicio de sesión</Link>
+          <Link to="/login">← Volver al inicio de sesión</Link>
         </footer>
       </div>
     </main>

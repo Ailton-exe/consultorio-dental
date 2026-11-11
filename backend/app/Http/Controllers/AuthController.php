@@ -18,6 +18,7 @@ class AuthController extends Controller
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
+            'role' => 'patient',
         ]);
         return response()->json([
             'message' => 'Usuario registrado correctamente',
@@ -41,6 +42,17 @@ class AuthController extends Controller
             'message' => 'Inicio de sesión correcto',
             'token' => $token,
             'user' => $user,
+        ]);
+    }
+
+
+    public function logout(Request $request)
+    {
+        // Revocar el token utilizado en esta sesión
+        $request->user()->currentAccessToken()->delete();
+
+        return response()->json([
+            'message' => 'Sesión cerrada correctamente.'
         ]);
     }
 }
