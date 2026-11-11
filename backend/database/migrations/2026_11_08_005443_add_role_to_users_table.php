@@ -8,6 +8,11 @@ return new class extends Migration
 {
     public function up(): void
     {
+        // La columna ya la crea 2026_10_20_234802_add_role_to_users_table.
+        if (Schema::hasColumn('users', 'role')) {
+            return;
+        }
+
         Schema::table('users', function (Blueprint $table) {
             $table->string('role')
                 ->default('patient');
@@ -16,8 +21,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('role');
-        });
+        // No se elimina la columna: pertenece a la migración anterior.
     }
 };
