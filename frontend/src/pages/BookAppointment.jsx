@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { API_URL } from "../config";
+import { Link } from "react-router-dom";
 import "../styles/BookAppointment.css";
 
 function BookAppointment() {
@@ -33,7 +34,7 @@ function BookAppointment() {
             const token = localStorage.getItem("token");
 
             const response = await fetch(
-                `http://127.0.0.1:8000/api/available-slots?date=${date}`,
+                `${API_URL}/api/available-slots?date=${date}`,
                 {
                     headers: {
                         Accept: "application/json",
@@ -77,7 +78,7 @@ function BookAppointment() {
             const token = localStorage.getItem("token");
 
             const response = await fetch(
-                "http://127.0.0.1:8000/api/appointments",
+                `${API_URL}/api/appointments`,
                 {
                     method: "POST",
                     headers: {
@@ -127,7 +128,7 @@ function BookAppointment() {
             const token = localStorage.getItem("token");
 
             const response = await fetch(
-                `http://127.0.0.1:8000/api/available-slots?date=${selectedDate}`,
+                `${API_URL}/api/available-slots?date=${selectedDate}`,
                 {
                     headers: {
                         Accept: "application/json",

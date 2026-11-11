@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { API_URL } from "../config";
+import { Link } from "react-router-dom";
 import "../styles/AdminSchedules.css";
 
 function AdminSchedules() {
@@ -27,7 +28,7 @@ function AdminSchedules() {
             const token = localStorage.getItem("token");
 
             const response = await fetch(
-                "http://127.0.0.1:8000/api/admin/schedules",
+                `${API_URL}/api/admin/schedules`,
                 {
                     method: "POST",
                     headers: {

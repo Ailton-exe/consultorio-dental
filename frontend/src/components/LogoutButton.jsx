@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LogOut } from "lucide-react";
+import { API_URL } from "../config";
 
 function LogoutButton() {
     const navigate = useNavigate();
@@ -13,7 +14,7 @@ function LogoutButton() {
             const token = localStorage.getItem("token");
 
             if (token) {
-                await fetch("http://127.0.0.1:8000/api/logout", {
+                await fetch(`${API_URL}/api/logout`, {
                     method: "POST",
                     headers: {
                         "Accept": "application/json",

@@ -1,4 +1,3 @@
-
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -11,38 +10,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Eliminar el índice único anterior si existe.
-        DB::statement("
-            DROP INDEX IF EXISTS
-            appointments_appointment_date_start_time_unique
-            ON appointments
-        ");
-
-        // Eliminar la columna generada si quedó de un intento anterior
-        // que falló antes de completar la migración.
-        DB::statement("
+        // Eliminar la restricción única anterior (en PostgreSQL
+        // $table->unique() crea una constraint, no solo un índice).
+        DB::statement('
             ALTER TABLE appointments
-            DROP COLUMN IF EXISTS active_slot_date
-        ");
+            DROP CONSTRAINT IF EXISTS appointments_appointment_date_start_time_unique
+        ');
 
-        // Las citas canceladas tendrán NULL en active_slot_date.
-        // Las demás conservarán su fecha y estarán sujetas al índice único.
-        DB::statement("
-            ALTER TABLE appointments
-            ADD COLUMN active_slot_date DATE
-            GENERATED ALWAYS AS (
-                CASE
-                    WHEN status != 'cancelled'
-                    THEN appointment_date
-                    ELSE NULL
-                END
-            ) STORED
-        ");
-
-        // Impedir que dos citas no canceladas ocupen el mismo horario.
+        // Permitir repetir un horario únicamente si
+        // la cita anterior está cancelada.
         DB::statement("
             CREATE UNIQUE INDEX appointments_active_slot_unique
-            ON appointments (active_slot_date, start_time)
+            ON appointments (appointment_date, start_time)
+            WHERE status != 'cancelled'
         ");
     }
 
@@ -52,23 +32,15 @@ return new class extends Migration
     public function down(): void
     {
         // Eliminar el índice nuevo.
-        DB::statement("
-            DROP INDEX IF EXISTS
-            appointments_active_slot_unique
-            ON appointments
-        ");
+        DB::statement(
+            'DROP INDEX IF EXISTS appointments_active_slot_unique'
+        );
 
-        // Eliminar la columna generada.
-        DB::statement("
+        // Restaurar la restricción original.
+        DB::statement('
             ALTER TABLE appointments
-            DROP COLUMN IF EXISTS active_slot_date
-        ");
-
-        // Restaurar el índice único original.
-        DB::statement("
-            CREATE UNIQUE INDEX
-            appointments_appointment_date_start_time_unique
-            ON appointments (appointment_date, start_time)
-        ");
+            ADD CONSTRAINT appointments_appointment_date_start_time_unique
+            UNIQUE (appointment_date, start_time)
+        ');
     }
 };
